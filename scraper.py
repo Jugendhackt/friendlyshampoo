@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import json
 
 alle_produkte = {}
 
@@ -36,6 +37,9 @@ def ingredientraussucher(artikelnummer):
 for artikelnummer in alle_produkte.keys():
     alle_produkte[artikelnummer]["ingredients"] = ingredientraussucher(artikelnummer)
 
-print(alle_produkte)
+#speichern in the datei
 
 
+file = open("alle_produkte.json","w")
+json.dump(alle_produkte,file,indent=4)
+file.close()
